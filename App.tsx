@@ -7,14 +7,14 @@ import {
 import { Routes } from '@routes/index';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
-import theme from './src/theme';
+import theme from '@theme/index';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ NunitoSans_400Regular, NunitoSans_700Bold });
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="inverted" translucent />
+      <StatusBar style="auto" translucent />
       {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
