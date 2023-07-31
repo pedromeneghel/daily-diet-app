@@ -31,5 +31,5 @@ export default {
     XL: 24,
     XXL: 32
   },
-  LINE_HEIGHT: '130%'
+  LINE_HEIGHT: 130
 };
