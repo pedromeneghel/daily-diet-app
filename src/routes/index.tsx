@@ -6,7 +6,7 @@ import { useTheme } from 'styled-components/native';
 export function Routes() {
   const { COLORS } = useTheme();
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.GRAY_600 }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.BASE.GRAY_1 }}>
       <NavigationContainer>
         <AppRoutes />
       </NavigationContainer>
