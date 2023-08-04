@@ -1,3 +1,4 @@
+import { SectionList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { css } from 'styled-components/native';
 
@@ -8,17 +9,22 @@ export const Container = styled(SafeAreaView)`
 `;
 
 export const NewMeal = styled.View`
-  flex: 1;
+  width: 100%;
+  min-height: 79px;
+  max-height: 79px;
   margin-top: 40px;
 `;
 
 export const NeMealTitle = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.REGULAR};
-    font-size: ${theme.FONT_SIZE.SM}px;
+    font-size: ${theme.FONT_SIZE.XS}px;
     color: ${theme.COLORS.BASE.GRAY_1};
-    line-height: ${(theme.FONT_SIZE.SM * theme.LINE_HEIGHT) / 100}px;
+    line-height: ${(theme.FONT_SIZE.XS * theme.LINE_HEIGHT) / 100}px;
   `};
   margin-bottom: 5px;
 `;
 
+export const MealsList = styled(SectionList)`
+  width: 100%;
+`;
