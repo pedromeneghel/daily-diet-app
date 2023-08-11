@@ -3,9 +3,11 @@ import { Plus } from 'phosphor-react-native';
 import styled, { css } from 'styled-components/native';
 
 export type ButtonWidthStyleProps = 'FULL' | 'LIMITED';
+export type ButTonColorStyleProps = 'PRIMARY' | 'ACTIVE_PRIMARY' | 'SECONDARY' | 'ACTIVE_SECONDARY' | 'BASE';
 
 type Props = {
   width: ButtonWidthStyleProps;
+  color: ButTonColorStyleProps;
 }
 
 export const Container = styled(TouchableOpacity) <Props>`
@@ -19,6 +21,9 @@ export const Container = styled(TouchableOpacity) <Props>`
   border-radius: 6px;
   justify-content: center;
   align-items: center;
+  ${({ width }) => width === 'FULL' && css`
+    flex: 1;
+  `};
 `;
 
 export const Title = styled.Text`
