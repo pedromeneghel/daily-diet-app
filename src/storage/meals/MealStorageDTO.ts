@@ -1,5 +1,5 @@
 export type MealStorageDTO = {
-  id: string;
+  id?: string;
   meal: string;
   description: string;
   isInDiet: boolean;
