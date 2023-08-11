@@ -1,9 +1,21 @@
-import styled from 'styled-components/native';
 import { ArrowLeft } from 'phosphor-react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
+export type HeaderTypeStyleProps = 'PRIMARY' | 'SECONDARY';
+
+type Props = {
+  type: HeaderTypeStyleProps;
+}
+
+export const Container = styled(SafeAreaView) <Props>`
   width: 100%;
-  flex-direction: row;
+  ${({ theme, type }) => type === 'SECONDARY' && css`
+    flex-direction: row; 
+    align-items: center;
+    padding: 10px 24px 44px 24px;
+    background-color: ${theme.COLORS.BASE.GRAY_5};
+  `}
 `;
 
 export const Logo = styled.Image`
@@ -12,12 +24,23 @@ export const Logo = styled.Image`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  flex: 1;
+  height: 24px;
+  width: 24px;
 `;
 
 export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => (
   {
-    size: 32,
-    color: theme.COLORS.PRODUCT.GREEN_DARK
+    size: 24,
+    color: theme.COLORS.BASE.GRAY_1,
   }
 ))``;
+
+export const Title = styled.Text`
+  ${({ theme }) => css`
+    color: ${theme.COLORS.BASE.GRAY_1};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.LG}px;
+  `};
+  flex: 1;
+  text-align: center;
+`;
