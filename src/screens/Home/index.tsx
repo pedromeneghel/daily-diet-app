@@ -6,6 +6,8 @@ import { MealCardHeader } from '@components/MealCardHeader';
 import { SummaryStats } from '@components/SummaryStats';
 import { useState } from 'react';
 import { Container, MealsList, NeMealTitle, NewMeal } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { Input } from '@components/Input';
 
 type DailyMeal = {
   date: string;
@@ -18,6 +20,7 @@ type DailyMeal = {
 };
 
 export function Home() {
+  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
   const meals: DailyMeal[] = [
     {
@@ -122,7 +125,11 @@ export function Home() {
       <SummaryStats title="90,86%" subtitle="das refeições dentro da dieta" />
       <NewMeal>
         <NeMealTitle>Refeições</NeMealTitle>
-        <Button title="Nova refeição" type="ADD" />
+        <Button
+          title="Nova refeição"
+          type="ADD"
+          onPress={() => navigation.navigate('addMeal')}
+        />
       </NewMeal>
       {isLoading ? (
         <Loading />
