@@ -44,7 +44,7 @@ export const Title = styled.Text`
   ${({ theme }) => css`
     color: ${theme.COLORS.BASE.GRAY_1};
     font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.LG}px;
+    font-size: ${theme.FONT_SIZE.XXL}px;
   `}
 `;
 
@@ -52,6 +52,6 @@ export const Subtitle = styled.Text`
   ${({ theme }) => css`
     color: ${theme.COLORS.BASE.GRAY_2};
     font-family: ${theme.FONT_FAMILY.REGULAR};
-    font-size: ${theme.FONT_SIZE.XS}px;
+    font-size: ${theme.FONT_SIZE.SM}px;
   `}
 `;

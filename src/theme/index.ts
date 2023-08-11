@@ -26,11 +26,11 @@ export default {
   },
   FONT_SIZE: {
     XS: 12,
-    S: 14,
-    M: 16,
-    SM: 18,
-    MD: 24,
-    LG: 32
+    SM: 14,
+    MD: 16,
+    LG: 18,
+    XL: 24,
+    XXL: 32
   },
   LINE_HEIGHT: 130
 };

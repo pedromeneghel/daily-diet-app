@@ -18,11 +18,10 @@ export const NewMeal = styled.View`
 export const NeMealTitle = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.REGULAR};
-    font-size: ${theme.FONT_SIZE.XS}px;
+    font-size: ${theme.FONT_SIZE.MD}px;
     color: ${theme.COLORS.BASE.GRAY_1};
-    line-height: ${(theme.FONT_SIZE.XS * theme.LINE_HEIGHT) / 100}px;
   `};
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 `;
 
 export const MealsList = styled(SectionList)`
