@@ -24,6 +24,8 @@ export const Container = styled(TouchableOpacity) <Props>`
   ${({ width }) => width === 'FULL' && css`
     flex: 1;
   `};
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 export const Title = styled.Text`
