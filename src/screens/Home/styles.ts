@@ -1,8 +1,7 @@
-import { SectionList } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SectionList, View } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
-export const Container = styled(SafeAreaView)`
+export const Container = styled(View)`
   flex: 1;
   background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
   padding: 24px;

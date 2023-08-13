@@ -4,120 +4,34 @@ import { Loading } from '@components/Loading';
 import { MealCard } from '@components/MealCard';
 import { MealCardHeader } from '@components/MealCardHeader';
 import { SummaryStats } from '@components/SummaryStats';
-import { useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { mealsGetAllByDate } from '@storage/meals/mealsGetAllByDate';
+import { useCallback, useState } from 'react';
 import { Container, MealsList, NeMealTitle, NewMeal } from './styles';
-import { useNavigation } from '@react-navigation/native';
-import { Input } from '@components/Input';
-
-type DailyMeal = {
-  date: string;
-  data: {
-    name: string;
-    description: string;
-    date: string;
-    isDiet: boolean;
-  }[];
-};
+import { MealsStorageListDTO } from '@storage/meals/MealStorageListDTO';
+import { Alert } from 'react-native';
 
 export function Home() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
-  const meals: DailyMeal[] = [
-    {
-      date: '02.01.2023',
-      data: [
-        {
-          date: '02.01.2023',
-          name: 'Lanche',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '02.01.2023',
-          name: 'Almoço',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-        {
-          date: '02.01.2023',
-          name: 'Lanche 1',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '02.01.2023',
-          name: 'Almoço 2',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-        {
-          date: '02.01.2023',
-          name: 'Lanche 4',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '02.01.2023',
-          name: 'Almoço 5',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-      ],
-    },
-    {
-      date: '01.01.2023',
-      data: [
-        {
-          date: '01.01.2023',
-          name: 'Lanche',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Almoço',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Lanche 1',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Almoço 1',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Lanche 11',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Almoço 11',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Lanche 10',
-          description: 'Pão com presunto e queijo',
-          isDiet: false,
-        },
-        {
-          date: '01.01.2023',
-          name: 'Almoço 10',
-          description: 'Arroz feijão e ovo',
-          isDiet: true,
-        },
-      ],
-    },
-  ];
+  const [mealsList, setMealsList] = useState<MealsStorageListDTO>([]);
+
+  async function getMealsByDate() {
+    setIsLoading(true);
+    try {
+      setMealsList(await mealsGetAllByDate());
+    } catch (error) {
+      Alert.alert('Ops', 'Faio o carregamento.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      getMealsByDate();
+    }, []),
+  );
 
   return (
     <Container>
@@ -126,6 +40,7 @@ export function Home() {
       <NewMeal>
         <NeMealTitle>Refeições</NeMealTitle>
         <Button
+          color="BASE"
           title="Nova refeição"
           type="ADD"
           onPress={() => navigation.navigate('addMeal')}
@@ -135,10 +50,14 @@ export function Home() {
         <Loading />
       ) : (
         <MealsList
-          sections={meals}
+          sections={mealsList}
           keyExtractor={(item, index) => `${item}-${index}`}
           renderItem={({ item }) => (
-            <MealCard title={item.name} hour="20:16" isDiet={false} />
+            <MealCard
+              title={item.meal}
+              hour={item.hour}
+              isDiet={item.isInDiet}
+            />
           )}
           renderSectionHeader={({ section }) => (
             <MealCardHeader title={section.date} />
