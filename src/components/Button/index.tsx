@@ -25,7 +25,9 @@ export function Button({
     <Container color={color} width={width} {...rest}>
       {type === 'ADD' && <AddIcon />}
 
-      <Title>{title}</Title>
+      <Title width={width} color={color}>
+        {title}
+      </Title>
     </Container>
   );
 }
