@@ -1,7 +1,11 @@
 import { Button } from '@components/Button';
 import { Header } from '@components/Header';
 import { Input } from '@components/Input';
+import { useNavigation } from '@react-navigation/native';
+import { mealCreate } from '@storage/meals/mealCreate';
+import { AppError } from '@utils/AppError';
 import { useState } from 'react';
+import { Alert, Platform } from 'react-native';
 import {
   Container,
   Container50,
@@ -11,19 +15,59 @@ import {
   OneColumnContainer,
   TwoColumnContainer,
 } from './styles';
-import { Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { mealCreate } from '@storage/meals/mealCreate';
-import { MealStorageDTO } from '@storage/meals/MealStorageDTO';
-import { AppError } from '@utils/AppError';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Pressable } from 'react-native';
+import { format } from 'date-fns';
 
 export function AddMeal() {
   const navigation = useNavigation();
   const [meal, setMeal] = useState('');
   const [description, setDescription] = useState('');
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [tmpDate, setTmpDate] = useState(new Date());
   const [date, setDate] = useState('');
-  const [hour, setHour] = useState('');
+  const [showTimePicker, setShowTimePicker] = useState(false);
+  const [tmpTime, setTmpTime] = useState(new Date());
+  const [time, setTime] = useState('');
   const [isInDiet, setIsInDiet] = useState(true);
+
+  const toggleDatePicker = () => {
+    setShowDatePicker(!showDatePicker);
+  };
+
+  const toggleTimePicker = () => {
+    setShowTimePicker(!showTimePicker);
+  };
+
+  const onChangeDatePicker = ({ type }: any, selectedDate: any) => {
+    if (type == 'set') {
+      setTmpDate(selectedDate);
+
+      if (Platform.OS === 'android') {
+        toggleDatePicker();
+        setDate(format(selectedDate, 'dd/MM/yyyy'));
+      }
+    } else {
+      toggleDatePicker();
+    }
+  };
+
+  const onChangeTimePicker = ({ type }: any, selectedTime: any) => {
+    if (type == 'set') {
+      setTmpTime(selectedTime);
+
+      if (Platform.OS === 'android') {
+        toggleTimePicker();
+        setTime(format(selectedTime, 'HH:mm'));
+      }
+    } else {
+      toggleTimePicker();
+    }
+  };
+
+  function handleInDiet(value: boolean) {
+    setIsInDiet(value);
+  }
 
   async function handleNewMeal() {
     try {
@@ -32,15 +76,14 @@ export function AddMeal() {
       }
 
       await mealCreate({
-        date: '01/01/2023',
+        date,
         meal,
         description,
-        hour,
+        hour: time,
         isInDiet,
       });
 
-      // navigation.navigate('players', { group });
-      Alert.alert('Sucesso!', 'Refeição criada com sucesso!');
+      navigation.navigate('feedbackAddMeal', { isInDiet });
     } catch (error: any) {
       if (error instanceof AppError) {
         Alert.alert('Ops', error.message);
@@ -51,7 +94,7 @@ export function AddMeal() {
         );
       }
     }
-    console.log(meal, description, date, hour, isInDiet);
+    console.log(meal, description, date, time, isInDiet);
   }
 
   return (
@@ -75,11 +118,55 @@ export function AddMeal() {
           <TwoColumnContainer>
             <Container50>
               <Label>Data</Label>
-              <Input onChangeText={setDate} />
+              {showDatePicker && (
+                <DateTimePicker
+                  mode="date"
+                  display="spinner"
+                  value={tmpDate}
+                  onChange={onChangeDatePicker}
+                  minimumDate={new Date('1900-01-01')}
+                />
+              )}
+
+              <Pressable onPress={toggleDatePicker}>
+                <Input editable={false} value={date} />
+              </Pressable>
             </Container50>
             <Container50>
               <Label>Hora</Label>
-              <Input onChangeText={setHour} />
+              {showTimePicker && (
+                <DateTimePicker
+                  mode="time"
+                  is24Hour
+                  display="spinner"
+                  value={tmpDate}
+                  onChange={onChangeTimePicker}
+                />
+              )}
+
+              <Pressable onPress={toggleTimePicker}>
+                <Input editable={false} value={time} />
+              </Pressable>
+            </Container50>
+          </TwoColumnContainer>
+
+          <Label>Está dentro da dieta?</Label>
+          <TwoColumnContainer>
+            <Container50>
+              <Button
+                color={isInDiet ? 'ACTIVE_PRIMARY' : 'PRIMARY'}
+                title="Sim"
+                width="FULL"
+                onPress={() => handleInDiet(true)}
+              />
+            </Container50>
+            <Container50>
+              <Button
+                color={!isInDiet ? 'ACTIVE_SECONDARY' : 'SECONDARY'}
+                title="Não"
+                width="FULL"
+                onPress={() => handleInDiet(false)}
+              />
             </Container50>
           </TwoColumnContainer>
         </Form>
