@@ -16,6 +16,7 @@ export const NewMeal = styled.View`
 
 export const NeMealTitle = styled.Text`
   ${({ theme }) => css`
+    background-color: ${theme.COLORS.BASE.GRAY_7};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
     color: ${theme.COLORS.BASE.GRAY_1};

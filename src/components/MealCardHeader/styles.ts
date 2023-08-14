@@ -4,7 +4,7 @@ export const Container = styled.View`
   width: 100%;
   padding-bottom: 8px;
   padding-top: 30px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
 `;
 
 export const Title = styled.Text`

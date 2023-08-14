@@ -14,7 +14,7 @@ export const Container = styled(SafeAreaView) <Props>`
     flex-direction: row; 
     align-items: center;
     padding: 10px 24px 44px 24px;
-    background-color: ${theme.COLORS.BASE.GRAY_5};
+    background-color: ${theme.COLORS.BASE.GRAY_7};
   `}
 `;
 
