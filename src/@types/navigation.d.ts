@@ -6,7 +6,8 @@ export declare global {
       getMeal: undefined;
       feedbackAddMeal: {
         isInDiet: boolean;
-      }
+      };
+      statistics: undefined;
     }
   }
 }

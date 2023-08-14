@@ -3,6 +3,7 @@ import { Home } from '@screens/Home';
 import { AddMeal } from '@screens/AddMeal';
 import { GetMeal } from '@screens/GetMeal';
 import { FeedbackAddMeal } from '@screens/FeedbackAddMeal';
+import { Statistics } from '@screens/Statistics';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ export function AppRoutes() {
       <Screen name="addMeal" component={AddMeal} />
       <Screen name="getMeal" component={GetMeal} />
       <Screen name="feedbackAddMeal" component={FeedbackAddMeal} />
+      <Screen name="statistics" component={Statistics} />
     </Navigator>
   );
 }
