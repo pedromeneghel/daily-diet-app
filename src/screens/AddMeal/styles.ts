@@ -7,7 +7,7 @@ export const Container = styled.View`
 
 export const Content = styled.ScrollView`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.BASE.WHITE};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
   border-radius: 20px;
   padding: 40px 24px 24px 24px;
   margin-top: -20px;
