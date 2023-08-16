@@ -36,7 +36,11 @@ export function Home() {
   return (
     <Container>
       <Header />
-      <SummaryStats title="90,86%" subtitle="das refeições dentro da dieta" />
+      <SummaryStats
+        title="90,86%"
+        subtitle="das refeições dentro da dieta"
+        onPress={() => navigation.navigate('statistics')}
+      />
       <NewMeal>
         <NeMealTitle>Refeições</NeMealTitle>
         <Button
