@@ -8,6 +8,9 @@ export declare global {
         isInDiet: boolean;
       };
       statistics: undefined;
+      mealDetails: {
+        mealId: string;
+      }
     }
   }
 }
