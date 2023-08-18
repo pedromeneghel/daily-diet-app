@@ -3,7 +3,10 @@ import { Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { css } from 'styled-components/native';
 
-export type HeaderTypeStyleProps = 'GOOD' | 'BAD';
+export enum HeaderTypeStyleProps {
+  good = 'GOOD',
+  bad = 'BAD'
+}
 
 type Props = {
   type: HeaderTypeStyleProps;
