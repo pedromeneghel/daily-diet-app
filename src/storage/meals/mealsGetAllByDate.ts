@@ -3,7 +3,7 @@ import { MEALS_COLLECTION } from '@storage/storageConfig';
 import { MealStorageDTO } from './MealStorageDTO';
 import { MealsStorageListDTO } from './MealStorageListDTO';
 
-export async function mealsGetAllByDate() {
+export async function mealsGetAllByDate(): Promise<MealsStorageListDTO> {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
 
