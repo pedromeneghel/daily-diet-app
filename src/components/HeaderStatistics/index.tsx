@@ -10,11 +10,15 @@ import {
 } from './styles';
 
 type Props = {
-  type?: HeaderTypeStyleProps;
+  percentageMealsInDiet: number;
 };
 
-export function HeaderStatistics({ type = 'GOOD' }: Props) {
+export function HeaderStatistics({ percentageMealsInDiet }: Props) {
   const navigation = useNavigation();
+  const type =
+    percentageMealsInDiet <= 35
+      ? HeaderTypeStyleProps.bad
+      : HeaderTypeStyleProps.good;
 
   return (
     <Container type={type}>
@@ -22,7 +26,7 @@ export function HeaderStatistics({ type = 'GOOD' }: Props) {
         <BackIcon type={type} />
       </BackButton>
       <Content>
-        <Title>90,86%</Title>
+        <Title>{percentageMealsInDiet.toFixed(2)} %</Title>
         <Subtitle>das refeições dentro da dieta</Subtitle>
       </Content>
     </Container>
