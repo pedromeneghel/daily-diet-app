@@ -18,7 +18,7 @@ export async function mealCreate(newMeal: MealStorageDTO): Promise<void> {
       id: randomUUID()
     }
 
-    const storage = JSON.stringify([...storedMeals, mealToCreate])
+    const storage = JSON.stringify([...storedMeals, mealToCreate]);
 
     await AsyncStorage.setItem(MEALS_COLLECTION, storage);
   } catch (error) {
