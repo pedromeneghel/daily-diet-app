@@ -8,4 +8,4 @@ export type MealsStorageListDTO = {
     date: string;
     hour: string;
   }[]
-}[];
+};

@@ -3,7 +3,7 @@ import { MEALS_COLLECTION } from '@storage/storageConfig';
 import { MealStorageDTO } from './MealStorageDTO';
 import { MealsStorageListDTO } from './MealStorageListDTO';
 
-export async function mealsGetAllByDate(): Promise<MealsStorageListDTO> {
+export async function mealsGetAllByDate(): Promise<MealsStorageListDTO[]> {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
 
@@ -16,7 +16,7 @@ export async function mealsGetAllByDate(): Promise<MealsStorageListDTO> {
       meal.date
     ));
     const filteredStoragedDates = [...new Set(storagedDates.reverse())];
-    const mealList: MealsStorageListDTO = [];
+    const mealList: MealsStorageListDTO[] = [];
 
     for (const date of filteredStoragedDates) {
       const meals = parsedStorage.filter((meal) => meal.date === date);
