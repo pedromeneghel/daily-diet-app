@@ -14,7 +14,7 @@ import { Alert } from 'react-native';
 export function Home() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
-  const [mealsList, setMealsList] = useState<MealsStorageListDTO>([]);
+  const [mealsList, setMealsList] = useState<MealsStorageListDTO[]>([]);
 
   async function getMealsByDate() {
     setIsLoading(true);
@@ -56,18 +56,20 @@ export function Home() {
         <MealsList
           sections={mealsList}
           keyExtractor={(item, index) => `${item}-${index}`}
-          renderItem={({ item }) => (
+          renderItem={({ item }: any) => (
             <MealCard
               title={item.meal}
               hour={item.hour}
               isDiet={item.isInDiet}
+              onPress={() => navigation.navigate('mealDetails', { mealId: item.id })}
             />
           )}
-          renderSectionHeader={({ section }) => (
+          renderSectionHeader={({ section }: any) => (
             <MealCardHeader title={section.date} />
           )}
           stickySectionHeadersEnabled
           showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps='always'
         />
       )}
     </Container>
