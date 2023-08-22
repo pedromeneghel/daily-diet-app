@@ -1,5 +1,5 @@
 {
-  "arrowParens": "avoid",
+  "arrowParents": "avoid",
   "bracketSpacing": true,
   "bracketSameLine": true,
   "printWidth": 80,
