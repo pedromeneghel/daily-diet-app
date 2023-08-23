@@ -5,7 +5,6 @@ export type MealsStorageListDTO = {
     meal: string;
     description: string;
     isInDiet: boolean;
-    date: string;
-    hour: string;
+    date: Date;
   }[]
 };

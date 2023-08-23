@@ -10,6 +10,7 @@ import { useCallback, useState } from 'react';
 import { Container, MealsList, NeMealTitle, NewMeal } from './styles';
 import { MealsStorageListDTO } from '@storage/meals/MealStorageListDTO';
 import { Alert } from 'react-native';
+import { format } from 'date-fns';
 
 export function Home() {
   const navigation = useNavigation();
@@ -59,7 +60,7 @@ export function Home() {
           renderItem={({ item }: any) => (
             <MealCard
               title={item.meal}
-              hour={item.hour}
+              hour={format(new Date(item.date), 'HH:mm')}
               isDiet={item.isInDiet}
               onPress={() => navigation.navigate('mealDetails', { mealId: item.id })}
             />

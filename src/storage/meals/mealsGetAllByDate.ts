@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MEALS_COLLECTION } from '@storage/storageConfig';
 import { MealStorageDTO } from './MealStorageDTO';
 import { MealsStorageListDTO } from './MealStorageListDTO';
+import { format } from 'date-fns';
 
 export async function mealsGetAllByDate(): Promise<MealsStorageListDTO[]> {
   try {
@@ -13,13 +14,13 @@ export async function mealsGetAllByDate(): Promise<MealsStorageListDTO[]> {
 
     const parsedStorage: MealStorageDTO[] = JSON.parse(storage);
     const storagedDates = parsedStorage.map((meal) => (
-      meal.date
+      format(new Date(meal.date), 'dd.MM.yyyy')
     ));
     const filteredStoragedDates = [...new Set(storagedDates.reverse())];
     const mealList: MealsStorageListDTO[] = [];
 
     for (const date of filteredStoragedDates) {
-      const meals = parsedStorage.filter((meal) => meal.date === date);
+      const meals = parsedStorage.filter((meal) => format(new Date(meal.date), 'dd.MM.yyyy') === date);
 
       mealList.push({
         date,

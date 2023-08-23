@@ -45,7 +45,7 @@ export function AddMeal() {
 
       if (Platform.OS === 'android') {
         toggleDatePicker();
-        setDate(format(selectedDate, 'dd/MM/yyyy'));
+        setDate(format(selectedDate, 'yyyy-MM-dd'));
       }
     } else {
       toggleDatePicker();
@@ -76,10 +76,9 @@ export function AddMeal() {
       }
 
       await mealCreate({
-        date,
+        date: new Date(`${date} ${time}`),
         meal,
         description,
-        hour: time,
         isInDiet,
       });
 
@@ -94,7 +93,6 @@ export function AddMeal() {
         );
       }
     }
-    console.log(meal, description, date, time, isInDiet);
   }
 
   return (
