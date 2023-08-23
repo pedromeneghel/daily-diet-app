@@ -6,8 +6,6 @@ export async function mealsGetAll(): Promise<MealStorageDTO[]> {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
 
-    console.log(storage);
-
     return storage ? JSON.parse(storage) : [];
   } catch (error) {
     throw error;

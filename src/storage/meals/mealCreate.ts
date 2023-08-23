@@ -18,11 +18,16 @@ export async function mealCreate(newMeal: MealStorageDTO): Promise<void> {
       id: randomUUID()
     }
 
-    const storage = JSON.stringify([...storedMeals, mealToCreate]);
+    const orderedMeals = [...storedMeals, mealToCreate].sort(compareDates);
+    const storage = JSON.stringify(orderedMeals);
 
     await AsyncStorage.setItem(MEALS_COLLECTION, storage);
   } catch (error) {
     throw error;
   }
+}
+
+function compareDates(a: MealStorageDTO,b: MealStorageDTO) {
+  return new Date(a.date).getTime() - new Date(b.date).getTime();
 }
 
