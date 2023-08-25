@@ -1,4 +1,4 @@
-import { Circle, Plus } from "phosphor-react-native";
+import { Circle } from "phosphor-react-native";
 import { Text, TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
@@ -8,7 +8,8 @@ export type ButTonColorStyleProps =
   | "ACTIVE_PRIMARY"
   | "SECONDARY"
   | "ACTIVE_SECONDARY"
-  | "BASE";
+  | "BASE"
+  | "INVERSE_BASE";
 
 type Props = {
   width: ButtonWidthStyleProps;
@@ -39,26 +40,33 @@ export const Container = styled(TouchableOpacity)<Props>`
     switch (color) {
       case "ACTIVE_PRIMARY":
         return `
-        background-color: ${theme.COLORS.PRODUCT.GREEN_LIGHT};
-        border-width: 1px;
-        border-color: ${theme.COLORS.PRODUCT.GREEN_DARK};
-      `;
+          background-color: ${theme.COLORS.PRODUCT.GREEN_LIGHT};
+          border-width: 1px;
+          border-color: ${theme.COLORS.PRODUCT.GREEN_DARK};
+        `;
       case "ACTIVE_SECONDARY":
         return `
-        background-color: ${theme.COLORS.PRODUCT.READ_LIGHT};
-        border-width: 1px;
-        border-color: ${theme.COLORS.PRODUCT.READ_DARK};
-      `;
+          background-color: ${theme.COLORS.PRODUCT.READ_LIGHT};
+          border-width: 1px;
+          border-color: ${theme.COLORS.PRODUCT.READ_DARK};
+        `;
       case "PRIMARY":
         return `
-        background-color: ${theme.COLORS.BASE.GRAY_6};
-      `;
+          background-color: ${theme.COLORS.BASE.GRAY_6};
+        `;
       case "SECONDARY":
         return `
-        background-color: ${theme.COLORS.BASE.GRAY_6};
-      `;
+          background-color: ${theme.COLORS.BASE.GRAY_6};
+        `;
       case "BASE":
         return `background-color: ${theme.COLORS.BASE.GRAY_2};`;
+      case "INVERSE_BASE":
+        return `
+          background-color: ${theme.COLORS.BASE.WHITE};
+          border-style: solid;
+          border-width: 2px;
+          border-color: ${theme.COLORS.BASE.GRAY_1};
+        `;
     }
   }};
 `;
@@ -71,13 +79,6 @@ export const Title = styled(Text)<Props>`
       ? theme.COLORS.BASE.WHITE
       : theme.COLORS.BASE.GRAY_1};
   `};
-`;
-
-export const AddIcon = styled(Plus).attrs(({ theme }) => ({
-  size: 13,
-  color: theme.COLORS.BASE.WHITE,
-}))`
-  margin-right: 10px;
 `;
 
 export const PrimaryCircle = styled(Circle).attrs(({ theme }) => ({
