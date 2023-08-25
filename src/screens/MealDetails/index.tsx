@@ -1,5 +1,6 @@
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
+import { Loading } from "@components/Loading";
 import {
   useFocusEffect,
   useNavigation,
@@ -8,6 +9,7 @@ import {
 import { MealStorageDTO } from "@storage/meals/MealStorageDTO";
 import { mealOneById } from "@storage/meals/mealGetOneById";
 import { mealRemoveById } from "@storage/meals/mealRemoveById";
+import { format } from "date-fns";
 import { useCallback, useState } from "react";
 import { Alert } from "react-native";
 
@@ -18,6 +20,9 @@ import {
   DateLabel,
   DateTime,
   Description,
+  DietStatusContainer,
+  DietStatusIcon,
+  DietStatusText,
   Meal,
   MealDetailsArea,
 } from "./styles";
@@ -38,7 +43,11 @@ export function MealDetails() {
     try {
       setMeal(await mealOneById(mealId));
     } catch (error) {
-      Alert.alert("Ops", "Faio o carregamento.");
+      console.error(error);
+      Alert.alert(
+        "Ops",
+        "Não conseguimos obter os dados da refeição, por favor tente novamente.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -49,6 +58,7 @@ export function MealDetails() {
       await mealRemoveById(mealId);
       navigation.navigate("home");
     } catch (error) {
+      console.error(error);
       Alert.alert("Excluir refeição", "Não foi possível excluir a refeição.");
     }
   }
@@ -66,9 +76,17 @@ export function MealDetails() {
     }, []),
   );
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
-      <Header type="SECONDARY" title="Refeição" showBackButton />
+      <Header
+        type={meal?.isInDiet ? "GOOD" : "BAD"}
+        title="Refeição"
+        showBackButton
+      />
       {meal && (
         <Content>
           <MealDetailsArea>
@@ -76,19 +94,30 @@ export function MealDetails() {
             <Description>{meal.description}</Description>
             <DateLabel>Data e hora</DateLabel>
             <DateTime>
-              {meal.date} à {meal.hour}
+              {`${format(new Date(meal.date), "dd/MM/yyyy")} às ${format(
+                new Date(meal.date),
+                "HH:mm",
+              )} `}
             </DateTime>
+            <DietStatusContainer>
+              <DietStatusIcon isDiet={meal.isInDiet} />
+              <DietStatusText>
+                {meal.isInDiet ? "dentro da dieta" : "fora da dieta"}
+              </DietStatusText>
+            </DietStatusContainer>
           </MealDetailsArea>
           <ButtonsArea>
             <Button
+              icon="Pencil"
               color="BASE"
               title="Editar refeição"
               onPress={() => navigation.navigate("editMeal", { mealId })}
             />
             <Button
-              color="BASE"
+              icon="Trash"
+              color="INVERSE_BASE"
               title="Excluir refeição"
-              onPress={() => handleRemoveMeal(meal.id)}
+              onPress={() => handleRemoveMeal(meal.id!)}
             />
           </ButtonsArea>
         </Content>
