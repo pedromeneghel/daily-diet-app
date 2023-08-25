@@ -72,7 +72,7 @@ export function Home() {
         <Button
           color="BASE"
           title="Nova refeição"
-          type="ADD"
+          icon="Plus"
           onPress={() => navigation.navigate("addMeal")}
         />
       </NewMeal>
