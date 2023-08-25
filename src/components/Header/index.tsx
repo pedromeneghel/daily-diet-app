@@ -21,7 +21,7 @@ type HeaderProps = {
 
 export function Header({
   showBackButton = false,
-  type = "PRIMARY",
+  type = "BASE",
   title,
 }: HeaderProps) {
   const navigation = useNavigation();

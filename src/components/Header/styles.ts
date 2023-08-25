@@ -2,7 +2,7 @@ import { ArrowLeft } from "phosphor-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled, { css } from "styled-components/native";
 
-export type HeaderTypeStyleProps = "PRIMARY" | "SECONDARY";
+export type HeaderTypeStyleProps = "LOGO" | "BASE" | "GOOD" | "BAD";
 
 type Props = {
   type: HeaderTypeStyleProps;
@@ -10,14 +10,33 @@ type Props = {
 
 export const Container = styled(SafeAreaView)<Props>`
   width: 100%;
-  ${({ theme, type }) =>
-    type === "SECONDARY" &&
+  ${({ type }) =>
+    type !== "LOGO" &&
     css`
       flex-direction: row;
       align-items: center;
       padding: 10px 24px 44px 24px;
+    `},
+  ${({ theme, type }) =>
+    type === "LOGO" &&
+    css`
       background-color: ${theme.COLORS.BASE.GRAY_7};
-    `}
+    `};
+  ${({ theme, type }) =>
+    type === "BASE" &&
+    css`
+      background-color: ${theme.COLORS.BASE.GRAY_5};
+    `};
+  ${({ theme, type }) =>
+    type === "BAD" &&
+    css`
+      background-color: ${theme.COLORS.PRODUCT.READ_LIGHT};
+    `};
+  ${({ theme, type }) =>
+    type === "GOOD" &&
+    css`
+      background-color: ${theme.COLORS.PRODUCT.GREEN_LIGHT};
+    `};
 `;
 
 export const Logo = styled.Image`
