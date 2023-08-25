@@ -1,4 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
+
 import {
   BackButton,
   BackIcon,
@@ -7,7 +8,7 @@ import {
   Subtitle,
   Content,
   HeaderTypeStyleProps,
-} from './styles';
+} from "./styles";
 
 type Props = {
   percentageMealsInDiet: number;
@@ -22,7 +23,7 @@ export function HeaderStatistics({ percentageMealsInDiet }: Props) {
 
   return (
     <Container type={type}>
-      <BackButton onPress={() => navigation.navigate('home')}>
+      <BackButton onPress={() => navigation.navigate("home")}>
         <BackIcon type={type} />
       </BackButton>
       <Content>

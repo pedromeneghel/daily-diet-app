@@ -4,4 +4,4 @@ export type MealStorageDTO = {
   description: string;
   isInDiet: boolean;
   date: Date;
-}
+};

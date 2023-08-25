@@ -1,4 +1,6 @@
-import logoImage from '@assets/logo.png';
+import logoImage from "@assets/logo.png";
+import { useNavigation } from "@react-navigation/native";
+
 import {
   BackButton,
   BackIcon,
@@ -6,8 +8,7 @@ import {
   HeaderTypeStyleProps,
   Logo,
   Title,
-} from './styles';
-import { useNavigation } from '@react-navigation/native';
+} from "./styles";
 
 type HeaderProps = {
   showBackButton?: boolean;
@@ -17,7 +18,7 @@ type HeaderProps = {
 
 export function Header({
   showBackButton = false,
-  type = 'PRIMARY',
+  type = "PRIMARY",
   title,
 }: HeaderProps) {
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ export function Header({
     <Container type={type}>
       {showBackButton ? (
         <>
-          <BackButton onPress={() => navigation.navigate('home')}>
+          <BackButton onPress={() => navigation.navigate("home")}>
             <BackIcon />
           </BackButton>
           <Title>{title}</Title>

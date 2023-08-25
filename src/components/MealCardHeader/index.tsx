@@ -1,4 +1,4 @@
-import { Container, Title } from './styles';
+import { Container, Title } from "./styles";
 
 type Props = {
   title: string;

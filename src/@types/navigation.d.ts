@@ -5,7 +5,7 @@ export declare global {
       addMeal: undefined;
       editMeal: {
         mealId: string;
-      },
+      };
       getMeal: undefined;
       feedbackAddMeal: {
         isInDiet: boolean;
@@ -13,7 +13,7 @@ export declare global {
       statistics: undefined;
       mealDetails: {
         mealId: string;
-      }
+      };
     }
   }
 }

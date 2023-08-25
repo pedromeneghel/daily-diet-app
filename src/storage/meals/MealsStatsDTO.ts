@@ -4,4 +4,4 @@ export type MealsStatsDTO = {
   amountOutDietMeals: number;
   bestInDietMealsSequence: number;
   percentageMelasInDiet: number;
-}
+};

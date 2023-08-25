@@ -1,8 +1,11 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { MEALS_COLLECTION } from '@storage/storageConfig';
-import { MealStorageDTO } from './MealStorageDTO';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MEALS_COLLECTION } from "@storage/storageConfig";
 
-export async function mealOneById(mealId: string): Promise<MealStorageDTO | null> {
+import { MealStorageDTO } from "./MealStorageDTO";
+
+export async function mealOneById(
+  mealId: string,
+): Promise<MealStorageDTO | null> {
   try {
     const storage = await AsyncStorage.getItem(MEALS_COLLECTION);
 

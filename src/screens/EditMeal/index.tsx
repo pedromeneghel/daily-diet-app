@@ -1,11 +1,20 @@
-import { Button } from '@components/Button';
-import { Header } from '@components/Header';
-import { Input } from '@components/Input';
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
-import { mealCreate } from '@storage/meals/mealCreate';
-import { AppError } from '@utils/AppError';
-import { useCallback, useState } from 'react';
-import { Alert, Platform } from 'react-native';
+import { Button } from "@components/Button";
+import { Header } from "@components/Header";
+import { Input } from "@components/Input";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
+import { MealStorageDTO } from "@storage/meals/MealStorageDTO";
+import { mealCreate } from "@storage/meals/mealCreate";
+import { mealOneById } from "@storage/meals/mealGetOneById";
+import { AppError } from "@utils/AppError";
+import { format } from "date-fns";
+import { useCallback, useState } from "react";
+import { Alert, Platform, Pressable } from "react-native";
+
 import {
   Container,
   Container50,
@@ -14,12 +23,7 @@ import {
   Label,
   OneColumnContainer,
   TwoColumnContainer,
-} from './styles';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { Pressable } from 'react-native';
-import { format } from 'date-fns';
-import { mealOneById } from '@storage/meals/mealGetOneById';
-import { MealStorageDTO } from '@storage/meals/MealStorageDTO';
+} from "./styles";
 
 type RouteParams = {
   mealId: string;
@@ -30,14 +34,14 @@ export function EditMeal() {
   const { mealId } = route.params as RouteParams;
   const navigation = useNavigation();
   const [gotMeal, setGotMeal] = useState<MealStorageDTO | null>(null);
-  const [meal, setMeal] = useState('');
-  const [description, setDescription] = useState('');
+  const [meal, setMeal] = useState("");
+  const [description, setDescription] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [tmpDate, setTmpDate] = useState(new Date());
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState("");
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [tmpTime, setTmpTime] = useState(new Date());
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState("");
   const [isInDiet, setIsInDiet] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,9 +49,9 @@ export function EditMeal() {
     setIsLoading(true);
     try {
       setGotMeal(await mealOneById(mealId));
-      setIsInDiet(gotMeal?.isInDiet ?? false)
+      setIsInDiet(gotMeal?.isInDiet ?? false);
     } catch (error) {
-      Alert.alert('Ops', 'Faio o carregamento.');
+      Alert.alert("Ops", "Faio o carregamento.");
     } finally {
       setIsLoading(false);
     }
@@ -62,12 +66,12 @@ export function EditMeal() {
   };
 
   const onChangeDatePicker = ({ type }: any, selectedDate: any) => {
-    if (type == 'set') {
+    if (type === "set") {
       setTmpDate(selectedDate);
 
-      if (Platform.OS === 'android') {
+      if (Platform.OS === "android") {
         toggleDatePicker();
-        setDate(format(selectedDate, 'dd/MM/yyyy'));
+        setDate(format(selectedDate, "dd/MM/yyyy"));
       }
     } else {
       toggleDatePicker();
@@ -75,12 +79,12 @@ export function EditMeal() {
   };
 
   const onChangeTimePicker = ({ type }: any, selectedTime: any) => {
-    if (type == 'set') {
+    if (type === "set") {
       setTmpTime(selectedTime);
 
-      if (Platform.OS === 'android') {
+      if (Platform.OS === "android") {
         toggleTimePicker();
-        setTime(format(selectedTime, 'HH:mm'));
+        setTime(format(selectedTime, "HH:mm"));
       }
     } else {
       toggleTimePicker();
@@ -94,7 +98,7 @@ export function EditMeal() {
   async function handleNewMeal() {
     try {
       if (meal.trim().length <= 2) {
-        return Alert.alert('Ops', 'Informe o nome da refeição.');
+        return Alert.alert("Ops", "Informe o nome da refeição.");
       }
 
       await mealCreate({
@@ -105,14 +109,14 @@ export function EditMeal() {
         isInDiet,
       });
 
-      navigation.navigate('feedbackAddMeal', { isInDiet });
+      navigation.navigate("feedbackAddMeal", { isInDiet });
     } catch (error: any) {
       if (error instanceof AppError) {
-        Alert.alert('Ops', error.message);
+        Alert.alert("Ops", error.message);
       } else {
         Alert.alert(
-          'Ops',
-          'Algo deu errado, por favor tente novamente mais tarde.',
+          "Ops",
+          "Algo deu errado, por favor tente novamente mais tarde.",
         );
       }
     }
@@ -138,10 +142,10 @@ export function EditMeal() {
             <Label>Descrição</Label>
             <Input
               onChangeText={setDescription}
-              multiline={true}
+              multiline
               numberOfLines={10}
               value={gotMeal?.description}
-              style={{ height: 200, textAlignVertical: 'top' }}
+              style={{ height: 200, textAlignVertical: "top" }}
             />
           </OneColumnContainer>
           <TwoColumnContainer>
@@ -153,7 +157,7 @@ export function EditMeal() {
                   display="spinner"
                   value={tmpDate}
                   onChange={onChangeDatePicker}
-                  minimumDate={new Date('1900-01-01')}
+                  minimumDate={new Date("1900-01-01")}
                 />
               )}
 
@@ -183,7 +187,7 @@ export function EditMeal() {
           <TwoColumnContainer>
             <Container50>
               <Button
-                color={isInDiet ? 'ACTIVE_PRIMARY' : 'PRIMARY'}
+                color={isInDiet ? "ACTIVE_PRIMARY" : "PRIMARY"}
                 title="Sim"
                 width="FULL"
                 onPress={() => handleInDiet(true)}
@@ -191,7 +195,7 @@ export function EditMeal() {
             </Container50>
             <Container50>
               <Button
-                color={!isInDiet ? 'ACTIVE_SECONDARY' : 'SECONDARY'}
+                color={!isInDiet ? "ACTIVE_SECONDARY" : "SECONDARY"}
                 title="Não"
                 width="FULL"
                 onPress={() => handleInDiet(false)}

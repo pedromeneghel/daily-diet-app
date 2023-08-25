@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
@@ -69,7 +69,7 @@ export const StatsIndicator = styled.Text`
     color: ${theme.COLORS.BASE.GRAY_1};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XL}px;
-    line-height: ${theme.LINE_HEIGHT * theme.FONT_SIZE.XL / 100}px;
+    line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.XL) / 100}px;
   `}
 `;
 
@@ -79,6 +79,6 @@ export const StatsText = styled.Text`
     color: ${theme.COLORS.BASE.GRAY_2};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.SM}px;
-    line-height: ${theme.LINE_HEIGHT * theme.FONT_SIZE.SM / 100}px;
+    line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.SM) / 100}px;
   `}
 `;

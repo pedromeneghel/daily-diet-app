@@ -24,7 +24,7 @@ export const Meal = styled.Text`
     color: ${theme.COLORS.BASE.GRAY_1};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XL}px;
-    line-height: ${theme.LINE_HEIGHT * theme.FONT_SIZE.XL / 100}px;
+    line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.XL) / 100}px;
   `}
 `;
 
@@ -35,7 +35,7 @@ export const Description = styled.Text`
     color: ${theme.COLORS.BASE.GRAY_2};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
-    line-height: ${theme.LINE_HEIGHT * theme.FONT_SIZE.MD / 100}px;
+    line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.MD) / 100}px;
   `}
 `;
 
@@ -46,7 +46,7 @@ export const DateLabel = styled.Text`
     color: ${theme.COLORS.BASE.GRAY_1};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.SM}px;
-    line-height: ${theme.LINE_HEIGHT * theme.FONT_SIZE.SM / 100}px;
+    line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.SM) / 100}px;
   `}
 `;
 
@@ -56,7 +56,7 @@ export const DateTime = styled.Text`
     color: ${theme.COLORS.BASE.GRAY_2};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
-    line-height: ${theme.LINE_HEIGHT * theme.FONT_SIZE.MD / 100}px;
+    line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.MD) / 100}px;
   `}
 `;
 

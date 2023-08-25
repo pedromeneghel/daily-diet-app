@@ -1,21 +1,23 @@
-import { ArrowLeft } from 'phosphor-react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import styled, { css } from 'styled-components/native';
+import { ArrowLeft } from "phosphor-react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import styled, { css } from "styled-components/native";
 
-export type HeaderTypeStyleProps = 'PRIMARY' | 'SECONDARY';
+export type HeaderTypeStyleProps = "PRIMARY" | "SECONDARY";
 
 type Props = {
   type: HeaderTypeStyleProps;
-}
+};
 
-export const Container = styled(SafeAreaView) <Props>`
+export const Container = styled(SafeAreaView)<Props>`
   width: 100%;
-  ${({ theme, type }) => type === 'SECONDARY' && css`
-    flex-direction: row; 
-    align-items: center;
-    padding: 10px 24px 44px 24px;
-    background-color: ${theme.COLORS.BASE.GRAY_7};
-  `}
+  ${({ theme, type }) =>
+    type === "SECONDARY" &&
+    css`
+      flex-direction: row;
+      align-items: center;
+      padding: 10px 24px 44px 24px;
+      background-color: ${theme.COLORS.BASE.GRAY_7};
+    `}
 `;
 
 export const Logo = styled.Image`
@@ -28,12 +30,10 @@ export const BackButton = styled.TouchableOpacity`
   width: 24px;
 `;
 
-export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => (
-  {
-    size: 24,
-    color: theme.COLORS.BASE.GRAY_1,
-  }
-))``;
+export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
+  size: 24,
+  color: theme.COLORS.BASE.GRAY_1,
+}))``;
 
 export const Title = styled.Text`
   ${({ theme }) => css`

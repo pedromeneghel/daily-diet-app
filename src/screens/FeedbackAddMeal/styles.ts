@@ -1,11 +1,11 @@
 import { Text } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export type TitleColorStyleProps = 'GOOD' | 'BAD';
+export type TitleColorStyleProps = "GOOD" | "BAD";
 
 type Props = {
-  color: TitleColorStyleProps
-}
+  color: TitleColorStyleProps;
+};
 
 export const Container = styled.View`
   flex: 1;
@@ -14,12 +14,14 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.COLORS.BASE.WHITE};
 `;
 
-export const Title = styled(Text) <Props>`
+export const Title = styled(Text)<Props>`
   margin-bottom: 8px;
   ${({ theme, color }) => css`
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XL}px;
-    color: ${color === "BAD" ? theme.COLORS.PRODUCT.READ_DARK : theme.COLORS.PRODUCT.GREEN_DARK};
+    color: ${color === "BAD"
+      ? theme.COLORS.PRODUCT.READ_DARK
+      : theme.COLORS.PRODUCT.GREEN_DARK};
   `};
 `;
 

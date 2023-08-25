@@ -1,12 +1,12 @@
-import { TouchableOpacity } from 'react-native';
-import { Circle } from 'phosphor-react-native';
-import styled, { css } from 'styled-components/native';
+import { Circle } from "phosphor-react-native";
+import { TouchableOpacity } from "react-native";
+import styled, { css } from "styled-components/native";
 
 export type MealIsDietStyleProps = boolean;
 
 type Props = {
   isDiet: MealIsDietStyleProps;
-}
+};
 
 export const Container = styled(TouchableOpacity)`
   width: 100%;
@@ -44,12 +44,12 @@ export const Hour = styled.Text`
   `}
 `;
 
-export const Icon = styled(Circle).attrs<Props>(({ theme, isDiet }) => (
-  {
-    size: 13,
-    color: isDiet ? theme.COLORS.PRODUCT.GREEN_MID : theme.COLORS.PRODUCT.READ_MID,
-    weight: 'fill'
-  }
-))`
+export const Icon = styled(Circle).attrs<Props>(({ theme, isDiet }) => ({
+  size: 13,
+  color: isDiet
+    ? theme.COLORS.PRODUCT.GREEN_MID
+    : theme.COLORS.PRODUCT.READ_MID,
+  weight: "fill",
+}))`
   margin-right: 10px;
 `;

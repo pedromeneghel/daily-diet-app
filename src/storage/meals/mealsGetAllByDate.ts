@@ -1,8 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { MEALS_COLLECTION } from '@storage/storageConfig';
-import { MealStorageDTO } from './MealStorageDTO';
-import { MealsStorageListDTO } from './MealStorageListDTO';
-import { format } from 'date-fns';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MEALS_COLLECTION } from "@storage/storageConfig";
+import { format } from "date-fns";
+
+import { MealStorageDTO } from "./MealStorageDTO";
+import { MealsStorageListDTO } from "./MealStorageListDTO";
 
 export async function mealsGetAllByDate(): Promise<MealsStorageListDTO[]> {
   try {
@@ -13,18 +14,20 @@ export async function mealsGetAllByDate(): Promise<MealsStorageListDTO[]> {
     }
 
     const parsedStorage: MealStorageDTO[] = JSON.parse(storage);
-    const storagedDates = parsedStorage.map((meal) => (
-      format(new Date(meal.date), 'dd.MM.yyyy')
-    ));
+    const storagedDates = parsedStorage.map((meal) =>
+      format(new Date(meal.date), "dd.MM.yyyy"),
+    );
     const filteredStoragedDates = [...new Set(storagedDates.reverse())];
     const mealList: MealsStorageListDTO[] = [];
 
     for (const date of filteredStoragedDates) {
-      const meals = parsedStorage.filter((meal) => format(new Date(meal.date), 'dd.MM.yyyy') === date);
+      const meals = parsedStorage.filter(
+        (meal) => format(new Date(meal.date), "dd.MM.yyyy") === date,
+      );
 
       mealList.push({
         date,
-        data: [...meals]
+        data: [...meals],
       });
     }
 

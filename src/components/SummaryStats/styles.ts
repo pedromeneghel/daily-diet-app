@@ -1,27 +1,28 @@
-import { TouchableOpacity } from 'react-native';
-import { ArrowUpRight } from 'phosphor-react-native';
-import styled, { css } from 'styled-components/native';
+import { ArrowUpRight } from "phosphor-react-native";
+import { TouchableOpacity } from "react-native";
+import styled, { css } from "styled-components/native";
 
-export type SummaryStatsStyleProps = 'GOOD' | 'BAD';
+export type SummaryStatsStyleProps = "GOOD" | "BAD";
 
 type Props = {
   type: SummaryStatsStyleProps;
-}
+};
 
-export const Container = styled(TouchableOpacity) <Props>`
+export const Container = styled(TouchableOpacity)<Props>`
   flex: 1;
   border-radius: 8px;
   min-height: 102px;
   max-height: 102px;
   margin-top: 30px;
   align-items: flex-end;
-  ${({ theme, type }) => (
-    type === 'GOOD' ? css`
-      background-color: ${theme.COLORS.PRODUCT.GREEN_LIGHT};
-    ` : css`
-      background-color: ${theme.COLORS.PRODUCT.READ_LIGHT};
-    `
-  )}
+  ${({ theme, type }) =>
+    type === "GOOD"
+      ? css`
+          background-color: ${theme.COLORS.PRODUCT.GREEN_LIGHT};
+        `
+      : css`
+          background-color: ${theme.COLORS.PRODUCT.READ_LIGHT};
+        `}
 `;
 
 export const Content = styled.View`
@@ -33,7 +34,10 @@ export const Content = styled.View`
 
 export const Icon = styled(ArrowUpRight).attrs<Props>(({ theme, type }) => ({
   size: 24,
-  color: type === 'GOOD' ? theme.COLORS.PRODUCT.GREEN_DARK : theme.COLORS.PRODUCT.READ_DARK,
+  color:
+    type === "GOOD"
+      ? theme.COLORS.PRODUCT.GREEN_DARK
+      : theme.COLORS.PRODUCT.READ_DARK,
 }))`
   margin-top: 5px;
   margin-right: 5px;

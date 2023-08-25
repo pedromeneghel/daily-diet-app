@@ -1,8 +1,9 @@
-import badImage from '@assets/bad.png';
-import goodImage from '@assets/good.png';
-import { Button } from '@components/Button';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { Container, Logo, Negrito, Subtitle, Title } from './styles';
+import badImage from "@assets/bad.png";
+import goodImage from "@assets/good.png";
+import { Button } from "@components/Button";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+import { Container, Logo, Negrito, Subtitle, Title } from "./styles";
 
 type RouteParams = {
   isInDiet: boolean;
@@ -38,7 +39,7 @@ export function FeedbackAddMeal() {
         color="BASE"
         type="NORMAL"
         title="Ir para página inicial"
-        onPress={() => navigation.navigate('home')}
+        onPress={() => navigation.navigate("home")}
       />
     </Container>
   );

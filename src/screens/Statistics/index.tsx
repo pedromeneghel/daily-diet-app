@@ -1,9 +1,10 @@
-import { HeaderStatistics } from '@components/HeaderStatistics';
-import { useFocusEffect } from '@react-navigation/native';
-import { MealsStatsDTO } from '@storage/meals/MealsStatsDTO';
-import { mealsStats } from '@storage/meals/mealsStats';
-import { useCallback, useState } from 'react';
-import { Alert } from 'react-native';
+import { HeaderStatistics } from "@components/HeaderStatistics";
+import { useFocusEffect } from "@react-navigation/native";
+import { MealsStatsDTO } from "@storage/meals/MealsStatsDTO";
+import { mealsStats } from "@storage/meals/mealsStats";
+import { useCallback, useState } from "react";
+import { Alert } from "react-native";
+
 import {
   Container,
   Content,
@@ -14,7 +15,7 @@ import {
   StatsText,
   Title,
   TwoColumnsContainer,
-} from './styles';
+} from "./styles";
 
 export function Statistics() {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,8 +32,8 @@ export function Statistics() {
     try {
       setStats(await mealsStats());
     } catch (error) {
-      console.log('error', error);
-      Alert.alert('Ops', 'Faio o carregamento.');
+      console.log("error", error);
+      Alert.alert("Ops", "Faio o carregamento.");
     } finally {
       setIsLoading(false);
     }

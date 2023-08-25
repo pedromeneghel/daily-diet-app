@@ -1,4 +1,5 @@
-import { TouchableOpacityProps } from 'react-native';
+import { TouchableOpacityProps } from "react-native";
+
 import {
   Container,
   Content,
@@ -6,7 +7,7 @@ import {
   Subtitle,
   SummaryStatsStyleProps,
   Title,
-} from './styles';
+} from "./styles";
 
 type Props = TouchableOpacityProps & {
   title: string;
@@ -17,7 +18,7 @@ type Props = TouchableOpacityProps & {
 export function SummaryStats({
   title,
   subtitle,
-  type = 'GOOD',
+  type = "GOOD",
   ...rest
 }: Props) {
   return (
