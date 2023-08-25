@@ -60,7 +60,7 @@ export function Home() {
 
   return (
     <Container>
-      <Header />
+      <Header type="LOGO" />
       <SummaryStats
         type={stats.percentageMelasInDiet <= 35 ? "BAD" : "GOOD"}
         title={`${stats.percentageMelasInDiet.toFixed(2)}%`}
