@@ -25,6 +25,17 @@ export const Logo = styled.Image`
   height: 37px;
 `;
 
+export const Profile = styled.Image`
+  width: 40px;
+  height: 40px;
+`;
+
+export const DefaultContent = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const BackButton = styled.TouchableOpacity`
   height: 24px;
   width: 24px;

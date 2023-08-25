@@ -1,12 +1,15 @@
 import logoImage from "@assets/logo.png";
+import profileImage from "@assets/profile.png";
 import { useNavigation } from "@react-navigation/native";
 
 import {
   BackButton,
   BackIcon,
   Container,
+  DefaultContent,
   HeaderTypeStyleProps,
   Logo,
+  Profile,
   Title,
 } from "./styles";
 
@@ -33,7 +36,10 @@ export function Header({
           <Title>{title}</Title>
         </>
       ) : (
-        <Logo source={logoImage} />
+        <DefaultContent>
+          <Logo source={logoImage} />
+          <Profile source={profileImage} />
+        </DefaultContent>
       )}
     </Container>
   );
