@@ -84,7 +84,7 @@ export function AddMeal() {
       }
 
       await mealCreate({
-        date: new Date(`${date} ${time}`),
+        date: new Date(`${format(new Date(tmpDate), "yyyy-MM-dd")} ${time}`),
         meal,
         description,
         isInDiet,
@@ -146,7 +146,7 @@ export function AddMeal() {
                   mode="time"
                   is24Hour
                   display="spinner"
-                  value={tmpDate}
+                  value={tmpTime}
                   onChange={onChangeTimePicker}
                 />
               )}
