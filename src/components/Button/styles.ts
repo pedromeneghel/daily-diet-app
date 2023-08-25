@@ -1,4 +1,4 @@
-import { Plus } from "phosphor-react-native";
+import { Circle, Plus } from "phosphor-react-native";
 import { Text, TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
@@ -78,4 +78,20 @@ export const AddIcon = styled(Plus).attrs(({ theme }) => ({
   color: theme.COLORS.BASE.WHITE,
 }))`
   margin-right: 10px;
+`;
+
+export const PrimaryCircle = styled(Circle).attrs(({ theme }) => ({
+  size: 10,
+  color: theme.COLORS.PRODUCT.GREEN_DARK,
+  weight: "fill",
+}))`
+  margin-right: 8px;
+`;
+
+export const SecondaryCircle = styled(Circle).attrs(({ theme }) => ({
+  size: 10,
+  color: theme.COLORS.PRODUCT.READ_DARK,
+  weight: "fill",
+}))`
+  margin-right: 8px;
 `;

@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="auto" translucent />
+      <StatusBar style="dark" />
       {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );

@@ -5,6 +5,8 @@ import {
   ButTonColorStyleProps,
   ButtonWidthStyleProps,
   Container,
+  PrimaryCircle,
+  SecondaryCircle,
   Title,
 } from "./styles";
 
@@ -25,6 +27,10 @@ export function Button({
   return (
     <Container color={color} width={width} {...rest}>
       {type === "ADD" && <AddIcon />}
+      {(color === "PRIMARY" || color === "ACTIVE_PRIMARY") && <PrimaryCircle />}
+      {(color === "SECONDARY" || color === "ACTIVE_SECONDARY") && (
+        <SecondaryCircle />
+      )}
 
       <Title width={width} color={color}>
         {title}

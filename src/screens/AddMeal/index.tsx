@@ -45,7 +45,7 @@ export function AddMeal() {
 
       if (Platform.OS === "android") {
         toggleDatePicker();
-        setDate(format(selectedDate, "yyyy-MM-dd"));
+        setDate(format(selectedDate, "dd/MM/yyyy"));
       }
     } else {
       toggleDatePicker();
@@ -71,8 +71,16 @@ export function AddMeal() {
 
   async function handleNewMeal() {
     try {
-      if (meal.trim().length <= 2) {
-        return Alert.alert("Ops", "Informe o nome da refeição.");
+      if (
+        meal.trim().length <= 2 ||
+        description.trim().length <= 2 ||
+        !date ||
+        !time
+      ) {
+        return Alert.alert(
+          "Nova refeição",
+          "Preencha todos os dados da refeição.",
+        );
       }
 
       await mealCreate({
@@ -88,7 +96,7 @@ export function AddMeal() {
         Alert.alert("Ops", error.message);
       } else {
         Alert.alert(
-          "Ops",
+          "Nova refeição",
           "Algo deu errado, por favor tente novamente mais tarde.",
         );
       }
@@ -102,7 +110,7 @@ export function AddMeal() {
         <Form>
           <OneColumnContainer>
             <Label>Nome</Label>
-            <Input onChangeText={setMeal} />
+            <Input onChangeText={setMeal} returnKeyType="next" />
           </OneColumnContainer>
           <OneColumnContainer>
             <Label>Descrição</Label>
@@ -111,6 +119,7 @@ export function AddMeal() {
               multiline
               numberOfLines={10}
               style={{ height: 200, textAlignVertical: "top" }}
+              returnKeyType="next"
             />
           </OneColumnContainer>
           <TwoColumnContainer>
@@ -127,7 +136,7 @@ export function AddMeal() {
               )}
 
               <Pressable onPress={toggleDatePicker}>
-                <Input editable={false} value={date} />
+                <Input editable={false} value={date} returnKeyType="next" />
               </Pressable>
             </Container50>
             <Container50>
@@ -143,7 +152,7 @@ export function AddMeal() {
               )}
 
               <Pressable onPress={toggleTimePicker}>
-                <Input editable={false} value={time} />
+                <Input editable={false} value={time} returnKeyType="next" />
               </Pressable>
             </Container50>
           </TwoColumnContainer>
@@ -172,6 +181,7 @@ export function AddMeal() {
           color="BASE"
           title="Cadastrar refeição"
           onPress={handleNewMeal}
+          style={{ marginBottom: 60 }}
         />
       </Content>
     </Container>
