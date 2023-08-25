@@ -1,4 +1,5 @@
 import { HeaderStatistics } from "@components/HeaderStatistics";
+import { Loading } from "@components/Loading";
 import { useFocusEffect } from "@react-navigation/native";
 import { MealsStatsDTO } from "@storage/meals/MealsStatsDTO";
 import { mealsStats } from "@storage/meals/mealsStats";
@@ -44,6 +45,10 @@ export function Statistics() {
       getMelasStats();
     }, []),
   );
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Container>
