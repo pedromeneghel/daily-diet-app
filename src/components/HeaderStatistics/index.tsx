@@ -17,7 +17,7 @@ type Props = {
 export function HeaderStatistics({ percentageMealsInDiet }: Props) {
   const navigation = useNavigation();
   const type =
-    percentageMealsInDiet <= 35
+    percentageMealsInDiet <= 50
       ? HeaderTypeStyleProps.bad
       : HeaderTypeStyleProps.good;
 

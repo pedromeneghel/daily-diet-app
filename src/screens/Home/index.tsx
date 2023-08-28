@@ -62,7 +62,7 @@ export function Home() {
     <Container>
       <Header type="LOGO" />
       <SummaryStats
-        type={stats.percentageMelasInDiet <= 35 ? "BAD" : "GOOD"}
+        type={stats.percentageMelasInDiet <= 50 ? "BAD" : "GOOD"}
         title={`${stats.percentageMelasInDiet.toFixed(2)}%`}
         subtitle="das refeições dentro da dieta"
         onPress={() => navigation.navigate("statistics")}
