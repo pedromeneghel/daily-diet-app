@@ -9,8 +9,8 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { MealStorageDTO } from "@storage/meals/MealStorageDTO";
-import { mealCreate } from "@storage/meals/mealCreate";
 import { mealOneById } from "@storage/meals/mealGetOneById";
+import { mealUpdate } from "@storage/meals/mealUpdate";
 import { AppError } from "@utils/AppError";
 import { format } from "date-fns";
 import { useCallback, useState } from "react";
@@ -34,7 +34,6 @@ export function EditMeal() {
   const route = useRoute();
   const { mealId } = route.params as RouteParams;
   const navigation = useNavigation();
-  const [gotMeal, setGotMeal] = useState<MealStorageDTO | null>(null);
   const [meal, setMeal] = useState("");
   const [description, setDescription] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -49,8 +48,16 @@ export function EditMeal() {
   async function getMealById() {
     setIsLoading(true);
     try {
-      setGotMeal(await mealOneById(mealId));
+      const gotMeal = await mealOneById(mealId);
+
+      setMeal(gotMeal?.meal!);
+      setDescription(gotMeal?.description!);
+      setDate(format(new Date(gotMeal?.date!), "dd/MM/yyyy"));
+      setTime(format(new Date(gotMeal?.date!), "HH:mm"));
       setIsInDiet(gotMeal?.isInDiet ?? false);
+
+      setTmpDate(new Date(gotMeal?.date!));
+      setTmpTime(new Date(gotMeal?.date!));
     } catch (error) {
       console.error(error);
       Alert.alert("Ops", "Faio o carregamento.");
@@ -97,32 +104,39 @@ export function EditMeal() {
     setIsInDiet(value);
   }
 
-  async function handleNewMeal() {
+  async function handleUpdateMeal() {
     try {
-      if (meal.trim().length <= 2) {
-        return Alert.alert("Ops", "Informe o nome da refeição.");
+      if (
+        meal.trim().length <= 2 ||
+        description.trim().length <= 2 ||
+        !date ||
+        !time
+      ) {
+        return Alert.alert(
+          "Editar refeição",
+          "Preencha todos os dados da refeição.",
+        );
       }
 
-      await mealCreate({
-        date,
+      await mealUpdate({
+        id: mealId,
+        date: new Date(`${format(new Date(tmpDate), "yyyy-MM-dd")} ${time}`),
         meal,
         description,
-        hour: time,
         isInDiet,
       });
 
       navigation.navigate("feedbackAddMeal", { isInDiet });
     } catch (error: any) {
       if (error instanceof AppError) {
-        Alert.alert("Ops", error.message);
+        Alert.alert("Editar refeição", error.message);
       } else {
         Alert.alert(
-          "Ops",
+          "Editar refeição",
           "Algo deu errado, por favor tente novamente mais tarde.",
         );
       }
     }
-    console.log(meal, description, date, time, isInDiet);
   }
 
   useFocusEffect(
@@ -143,11 +157,11 @@ export function EditMeal() {
         backButtonAction="BACK"
         showBackButton
       />
-      <Content>
+      <Content showsVerticalScrollIndicator={false}>
         <Form>
           <OneColumnContainer>
             <Label>Nome</Label>
-            <Input onChangeText={setMeal} value={gotMeal?.meal} />
+            <Input onChangeText={setMeal} value={meal} />
           </OneColumnContainer>
           <OneColumnContainer>
             <Label>Descrição</Label>
@@ -155,7 +169,7 @@ export function EditMeal() {
               onChangeText={setDescription}
               multiline
               numberOfLines={10}
-              value={gotMeal?.description}
+              value={description}
               style={{ height: 200, textAlignVertical: "top" }}
             />
           </OneColumnContainer>
@@ -183,7 +197,7 @@ export function EditMeal() {
                   mode="time"
                   is24Hour
                   display="spinner"
-                  value={tmpDate}
+                  value={tmpTime}
                   onChange={onChangeTimePicker}
                 />
               )}
@@ -216,8 +230,9 @@ export function EditMeal() {
         </Form>
         <Button
           color="BASE"
-          title="Cadastrar refeição"
-          onPress={handleNewMeal}
+          title="Salvar alterações"
+          onPress={() => handleUpdateMeal()}
+          style={{ marginBottom: 60 }}
         />
       </Content>
     </Container>
