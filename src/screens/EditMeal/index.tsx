@@ -1,6 +1,7 @@
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
 import { Input } from "@components/Input";
+import { Loading } from "@components/Loading";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import {
   useFocusEffect,
@@ -51,6 +52,7 @@ export function EditMeal() {
       setGotMeal(await mealOneById(mealId));
       setIsInDiet(gotMeal?.isInDiet ?? false);
     } catch (error) {
+      console.error(error);
       Alert.alert("Ops", "Faio o carregamento.");
     } finally {
       setIsLoading(false);
@@ -129,9 +131,18 @@ export function EditMeal() {
     }, []),
   );
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
-      <Header type="SECONDARY" title="Editar refeição" showBackButton />
+      <Header
+        type="BASE"
+        title="Editar refeição"
+        backButtonAction="BACK"
+        showBackButton
+      />
       <Content>
         <Form>
           <OneColumnContainer>

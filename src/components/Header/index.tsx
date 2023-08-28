@@ -15,12 +15,14 @@ import {
 
 type HeaderProps = {
   showBackButton?: boolean;
+  backButtonAction?: "HOME" | "BACK";
   title?: string;
   type?: HeaderTypeStyleProps;
 };
 
 export function Header({
   showBackButton = false,
+  backButtonAction = "HOME",
   type = "BASE",
   title,
 }: HeaderProps) {
@@ -30,7 +32,13 @@ export function Header({
     <Container type={type}>
       {showBackButton ? (
         <>
-          <BackButton onPress={() => navigation.navigate("home")}>
+          <BackButton
+            onPress={() =>
+              backButtonAction === "HOME"
+                ? navigation.navigate("home")
+                : navigation.goBack()
+            }
+          >
             <BackIcon />
           </BackButton>
           <Title>{title}</Title>
