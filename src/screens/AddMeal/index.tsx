@@ -105,8 +105,8 @@ export function AddMeal() {
 
   return (
     <Container>
-      <Header type="SECONDARY" title="Nova refeição" showBackButton />
-      <Content>
+      <Header type="BASE" title="Nova refeição" showBackButton />
+      <Content showsVerticalScrollIndicator={false}>
         <Form>
           <OneColumnContainer>
             <Label>Nome</Label>
