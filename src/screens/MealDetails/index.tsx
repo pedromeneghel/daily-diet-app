@@ -26,12 +26,11 @@ import {
   DietStatusText,
   Meal,
   MealDetailsArea,
-  RemoveModalContent,
+  RemoveModal,
   RemoveModalButtonGroup,
   RemoveModalContainer,
-  ModalContent,
+  RemoveModalContent,
   RemoveModalTitle,
-  RemoveModal,
 } from "./styles";
 
 type RouteParams = {

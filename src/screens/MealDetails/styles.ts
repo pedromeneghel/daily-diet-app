@@ -4,7 +4,7 @@ import styled, { css } from "styled-components/native";
 
 export type MealIsDietStyleProps = boolean;
 
-type Props = {
+export type Props = {
   isDiet: MealIsDietStyleProps;
 };
 

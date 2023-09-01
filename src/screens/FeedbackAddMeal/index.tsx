@@ -37,7 +37,6 @@ export function FeedbackAddMeal() {
 
       <Button
         color="BASE"
-        type="NORMAL"
         title="Ir para página inicial"
         onPress={() => navigation.navigate("home")}
       />

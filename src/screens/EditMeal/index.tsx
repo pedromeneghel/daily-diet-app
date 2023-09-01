@@ -8,7 +8,6 @@ import {
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import { MealStorageDTO } from "@storage/meals/MealStorageDTO";
 import { mealOneById } from "@storage/meals/mealGetOneById";
 import { mealUpdate } from "@storage/meals/mealUpdate";
 import { AppError } from "@utils/AppError";
