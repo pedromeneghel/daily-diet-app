@@ -20,12 +20,12 @@ export const Container = styled(SafeAreaView)<Props>`
   ${({ theme, type }) =>
     type === "LOGO" &&
     css`
-      background-color: ${theme.COLORS.BASE.GRAY_7};
+      background-color: ${theme.COLORS.BASE.GRAY_700};
     `};
   ${({ theme, type }) =>
     type === "BASE" &&
     css`
-      background-color: ${theme.COLORS.BASE.GRAY_5};
+      background-color: ${theme.COLORS.BASE.GRAY_500};
     `};
   ${({ theme, type }) =>
     type === "BAD" &&
@@ -62,12 +62,12 @@ export const BackButton = styled.TouchableOpacity`
 
 export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
   size: 24,
-  color: theme.COLORS.BASE.GRAY_1,
+  color: theme.COLORS.BASE.GRAY_100,
 }))``;
 
 export const Title = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.LG}px;
   `};

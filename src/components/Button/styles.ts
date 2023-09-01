@@ -52,20 +52,20 @@ export const Container = styled(TouchableOpacity)<Props>`
         `;
       case "PRIMARY":
         return `
-          background-color: ${theme.COLORS.BASE.GRAY_6};
+          background-color: ${theme.COLORS.BASE.GRAY_600};
         `;
       case "SECONDARY":
         return `
-          background-color: ${theme.COLORS.BASE.GRAY_6};
+          background-color: ${theme.COLORS.BASE.GRAY_600};
         `;
       case "BASE":
-        return `background-color: ${theme.COLORS.BASE.GRAY_2};`;
+        return `background-color: ${theme.COLORS.BASE.GRAY_200};`;
       case "INVERSE_BASE":
         return `
           background-color: ${theme.COLORS.BASE.WHITE};
           border-style: solid;
           border-width: 2px;
-          border-color: ${theme.COLORS.BASE.GRAY_1};
+          border-color: ${theme.COLORS.BASE.GRAY_100};
         `;
     }
   }};
@@ -77,7 +77,7 @@ export const Title = styled(Text)<Props>`
     font-family: ${theme.FONT_FAMILY.BOLD};
     color: ${color === "BASE"
       ? theme.COLORS.BASE.WHITE
-      : theme.COLORS.BASE.GRAY_1};
+      : theme.COLORS.BASE.GRAY_100};
   `};
 `;
 

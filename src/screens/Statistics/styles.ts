@@ -2,12 +2,12 @@ import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_700};
 `;
 
 export const Content = styled.ScrollView`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_700};
   border-radius: 20px;
   padding: 40px 24px 24px 24px;
   margin-top: -20px;
@@ -18,7 +18,7 @@ export const Title = styled.Text`
   text-align: center;
   margin-bottom: 23px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.SM}px;
   `}
@@ -30,7 +30,7 @@ export const GeneralStats = styled.View`
   border-radius: 8px;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_6};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_600};
   margin-bottom: 12px;
 `;
 
@@ -66,7 +66,7 @@ export const MealsOutDietContainer = styled.View`
 export const StatsIndicator = styled.Text`
   margin-bottom: 8px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XL}px;
     line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.XL) / 100}px;
@@ -76,7 +76,7 @@ export const StatsIndicator = styled.Text`
 export const StatsText = styled.Text`
   text-align: center;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.SM}px;
     line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.SM) / 100}px;

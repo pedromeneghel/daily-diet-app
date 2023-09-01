@@ -7,7 +7,7 @@ export const Container = styled.View`
 
 export const Content = styled.ScrollView`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_700};
   border-radius: 20px;
   padding: 40px 24px 24px 24px;
   margin-top: -20px;
@@ -41,7 +41,7 @@ export const Label = styled.Text`
   width: 100%;
   margin-bottom: 5px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.SM}px;
   `}

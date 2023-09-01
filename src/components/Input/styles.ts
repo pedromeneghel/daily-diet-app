@@ -7,11 +7,11 @@ export const Container = styled(TextInput)`
     min-height: 48px;
     max-height: 800px;
     background-color: ${theme.COLORS.BASE.WHITE};
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     border-style: solid;
     border-width: 1px;
     border-radius: 6px;
-    border-color: ${theme.COLORS.BASE.GRAY_5};
+    border-color: ${theme.COLORS.BASE.GRAY_500};
     padding: 16px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;

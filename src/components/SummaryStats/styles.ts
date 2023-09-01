@@ -46,7 +46,7 @@ export const Icon = styled(ArrowUpRight).attrs<Props>(({ theme, type }) => ({
 
 export const Title = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XXL}px;
   `}
@@ -54,7 +54,7 @@ export const Title = styled.Text`
 
 export const Subtitle = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.SM}px;
   `}

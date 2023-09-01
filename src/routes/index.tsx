@@ -7,7 +7,7 @@ import { AppRoutes } from "./app.routes";
 export function Routes() {
   const { COLORS } = useTheme();
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.BASE.GRAY_1 }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.BASE.GRAY_100 }}>
       <NavigationContainer>
         <AppRoutes />
       </NavigationContainer>

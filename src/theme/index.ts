@@ -2,13 +2,13 @@ export default {
   COLORS: {
     BASE: {
       WHITE: "#FFFFFF",
-      GRAY_1: "#1B1D1E",
-      GRAY_2: "#333638",
-      GRAY_3: "#5C6265",
-      GRAY_4: "#B9BBBC",
-      GRAY_5: "#DDDEDF",
-      GRAY_6: "#EFF0F0",
-      GRAY_7: "#FAFAFA",
+      GRAY_100: "#1B1D1E",
+      GRAY_200: "#333638",
+      GRAY_300: "#5C6265",
+      GRAY_400: "#B9BBBC",
+      GRAY_500: "#DDDEDF",
+      GRAY_600: "#EFF0F0",
+      GRAY_700: "#FAFAFA",
     },
     PRODUCT: {
       GREEN_DARK: "#639339",

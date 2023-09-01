@@ -15,7 +15,7 @@ export const Container = styled(TouchableOpacity)`
   border-radius: 6px;
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ theme }) => theme.COLORS.BASE.GRAY_5};
+  border-color: ${({ theme }) => theme.COLORS.BASE.GRAY_500};
   min-height: 49px;
   max-height: 49px;
   margin-bottom: 5px;
@@ -25,20 +25,20 @@ export const Container = styled(TouchableOpacity)`
 export const Title = styled.Text`
   flex: 1;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
   `}
 `;
 
 export const Separator = styled.Text`
-  color: ${({ theme }) => theme.COLORS.BASE.GRAY_4};
+  color: ${({ theme }) => theme.COLORS.BASE.GRAY_400};
   margin: 0 10px;
 `;
 
 export const Hour = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XS}px;
   `}

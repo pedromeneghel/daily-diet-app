@@ -3,7 +3,7 @@ import styled, { css } from "styled-components/native";
 
 export const Container = styled(View)`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_7};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_700};
   padding: 24px;
 `;
 
@@ -16,10 +16,10 @@ export const NewMeal = styled.View`
 
 export const NeMealTitle = styled.Text`
   ${({ theme }) => css`
-    background-color: ${theme.COLORS.BASE.GRAY_7};
+    background-color: ${theme.COLORS.BASE.GRAY_700};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
   `};
   margin-bottom: 8px;
 `;

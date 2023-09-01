@@ -29,7 +29,7 @@ export const Meal = styled.Text`
   width: 100%;
   margin-bottom: 8px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.XL}px;
     line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.XL) / 100}px;
@@ -40,7 +40,7 @@ export const Description = styled.Text`
   width: 100%;
   margin-bottom: 24px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
     line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.MD) / 100}px;
@@ -51,7 +51,7 @@ export const DateLabel = styled.Text`
   width: 100%;
   margin-bottom: 8px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.SM}px;
     line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.SM) / 100}px;
@@ -61,7 +61,7 @@ export const DateLabel = styled.Text`
 export const DateTime = styled.Text`
   width: 100%;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
     line-height: ${(theme.LINE_HEIGHT * theme.FONT_SIZE.MD) / 100}px;
@@ -77,7 +77,7 @@ export const DietStatusContainer = styled.View`
   flex-direction: row;
   margin-top: 24px;
   width: 144px;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_6};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_600};
   text-align: center;
   padding: 8px 16px 8px 16px;
   border-radius: 1000px;
@@ -87,7 +87,7 @@ export const DietStatusContainer = styled.View`
 
 export const DietStatusText = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_1};
+    color: ${theme.COLORS.BASE.GRAY_100};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.SM}px;
   `}
@@ -107,7 +107,7 @@ export const DietStatusIcon = styled(Circle).attrs<Props>(
 
 export const Cover = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_1};
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_100};
   position: absolute;
   top: 0;
   right: 0;
@@ -139,7 +139,7 @@ export const RemoveModalTitle = styled.Text`
   margin-top: 16px;
   margin-bottom: 32px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.LG}px;
   `}

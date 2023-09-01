@@ -39,7 +39,7 @@ export function Button({
           size={13}
           style={{ marginRight: 10 }}
           color={
-            color === "INVERSE_BASE" ? COLORS.BASE.GRAY_1 : COLORS.BASE.WHITE
+            color === "INVERSE_BASE" ? COLORS.BASE.GRAY_100 : COLORS.BASE.WHITE
           }
         />
       )}

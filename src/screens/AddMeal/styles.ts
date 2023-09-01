@@ -41,7 +41,7 @@ export const Label = styled.Text`
   width: 100%;
   margin-bottom: 5px;
   ${({ theme }) => css`
-    color: ${theme.COLORS.BASE.GRAY_2};
+    color: ${theme.COLORS.BASE.GRAY_200};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.SM}px;
   `}
