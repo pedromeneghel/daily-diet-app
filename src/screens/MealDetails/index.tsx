@@ -17,6 +17,7 @@ import {
   ButtonsArea,
   Container,
   Content,
+  Cover,
   DateLabel,
   DateTime,
   Description,
@@ -25,6 +26,12 @@ import {
   DietStatusText,
   Meal,
   MealDetailsArea,
+  RemoveModalContent,
+  RemoveModalButtonGroup,
+  RemoveModalContainer,
+  ModalContent,
+  RemoveModalTitle,
+  RemoveModal,
 } from "./styles";
 
 type RouteParams = {
@@ -36,6 +43,7 @@ export function MealDetails() {
   const navigation = useNavigation();
   const { mealId } = route.params as RouteParams;
   const [isLoading, setIsLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const [meal, setMeal] = useState<MealStorageDTO | null>(null);
 
   async function getMealById() {
@@ -63,13 +71,6 @@ export function MealDetails() {
     }
   }
 
-  async function handleRemoveMeal(mealId: string) {
-    Alert.alert("Excluir refeição", "Deseja realmente excluir essa refeição?", [
-      { text: "Não", style: "cancel" },
-      { text: "Sim", onPress: () => mealRemove(mealId) },
-    ]);
-  }
-
   useFocusEffect(
     useCallback(() => {
       getMealById();
@@ -79,6 +80,10 @@ export function MealDetails() {
   if (isLoading) {
     return <Loading />;
   }
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
 
   return (
     <Container>
@@ -117,11 +122,40 @@ export function MealDetails() {
               icon="Trash"
               color="INVERSE_BASE"
               title="Excluir refeição"
-              onPress={() => handleRemoveMeal(meal.id!)}
+              onPress={() => toggleModal()}
             />
           </ButtonsArea>
         </Content>
       )}
+      {modalVisible && <Cover />}
+      <RemoveModal
+        visible={modalVisible}
+        animationType="fade"
+        transparent
+        onRequestClose={() => setModalVisible(!modalVisible)}
+      >
+        <RemoveModalContainer>
+          <RemoveModalContent>
+            <RemoveModalTitle>
+              Deseja realmente excluir o registro da refeição?
+            </RemoveModalTitle>
+            <RemoveModalButtonGroup>
+              <Button
+                color="INVERSE_BASE"
+                title="Cancelar"
+                width="LIMITED"
+                onPress={() => toggleModal()}
+              />
+              <Button
+                color="BASE"
+                title="Sim, excluir"
+                width="LIMITED"
+                onPress={() => mealRemove(meal!.id!)}
+              />
+            </RemoveModalButtonGroup>
+          </RemoveModalContent>
+        </RemoveModalContainer>
+      </RemoveModal>
     </Container>
   );
 }

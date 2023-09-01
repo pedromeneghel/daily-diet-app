@@ -1,4 +1,5 @@
 import { Circle } from "phosphor-react-native";
+import { Modal } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export type MealIsDietStyleProps = boolean;
@@ -102,4 +103,49 @@ export const DietStatusIcon = styled(Circle).attrs<Props>(
   }),
 )`
   margin-right: 8px;
+`;
+
+export const Cover = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.COLORS.BASE.GRAY_1};
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.25;
+`;
+
+export const RemoveModal = styled(Modal)`
+  flex: 1;
+`;
+
+export const RemoveModalContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RemoveModalContent = styled.View`
+  width: 80%;
+  margin: 10%;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.COLORS.BASE.WHITE};
+  padding: 24px;
+`;
+
+export const RemoveModalTitle = styled.Text`
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  ${({ theme }) => css`
+    color: ${theme.COLORS.BASE.GRAY_2};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.LG}px;
+  `}
+`;
+
+export const RemoveModalButtonGroup = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
